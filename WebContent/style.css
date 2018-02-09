@@ -1,0 +1,52 @@
+body{
+	font-family: 'Open Sans', sans-serif;
+}
+
+#nav{
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 10%;
+	width: 100%;
+	background-color:#1A237E;
+	text-align: center;
+}
+
+#sidenav{
+	position: relative;
+	margin-top: 15%;
+
+}
+ul{
+	list-style-type: none;
+
+}
+a{
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: none;
+}
+#search{
+	position: relative;
+	margin-top: 10%;
+	text-align: center;
+}
+
+td,th{
+	text-align: right;
+}
+input,select{
+	-ms-box-sizing:content-box;
+-moz-box-sizing:content-box;
+-webkit-box-sizing:content-box; 
+box-sizing:content-box;
+}
+
+#flightResult{
+	text-align:center;
+	position:relative;
+	margin-top: 10%;
+}
