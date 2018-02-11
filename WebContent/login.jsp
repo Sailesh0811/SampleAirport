@@ -5,13 +5,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title></title>
+<style type="text/css">
+	#login{
+		margin-top:15%;
+	}
+	</style>
 </head>
 <body>
+<jsp:include page="header.jsp" />
+<div id="login">
 <form method="post" action="LoginServlet">
-<label>Customer Id</label><input type="text" name="customerId">
-<label>Password</label><input type="password" name="password">
-<input type="submit" value="login" name="login">
-<a href="signUp.jsp">Click here to sign up</a>
+<table align="center" cellspacing="20">
+<tr><td><label>Customer Id</label></td><td><input type="text" name="customerId"></td></tr>
+<tr><td><label>Password</label></td><td><input type="password" name="password"></td></tr>
+<tr><td><a href="signUp.jsp">Sign up</a></td><td><input type="submit" value="login" name="login"></td>
+</table>
+
 </form>
+</div>
 </body>
 </html>

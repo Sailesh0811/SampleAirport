@@ -4,15 +4,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Signup</title>
+<style type="text/css">
+	#signup{
+		margin-top: 15%;
+	}
+</style>
 </head>
 <body>
+<jsp:include page="header.jsp" />
+<div id="signup">
 <form action="SignUpServlet" method="post">
-<input type="text" name="name" placeholder="name" >
-<input type="text" name="gender"  placeholder="gender">
-<input type="text" name="contactNumber" placeholder="contact">
-<input type="password" name="password" placeholder="password">
-<input type="submit" name="submit" value="submit">
+<table cellspacing="20" align="center">
+<tr><td>Name</td><td><input type="text" name="name"  ></td></tr>
+<tr><td>Gender</td><td><input type="text" name="gender"  ></td></tr>
+<tr><td>Mobile Number</td><td><input type="text" name="contactNumber" ></td></tr>
+<tr><td>Password</td><td><input type="password" name="password" ></td></tr>
+<tr><td></td><td><input type="submit" name="submit" value="Sign Up"></td></tr>
+</table>
 </form>
+</div>
 </body>
 </html>

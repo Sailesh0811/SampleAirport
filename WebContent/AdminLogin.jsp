@@ -7,11 +7,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Admin Login</title>
+<style type="text/css">
+	#login{
+		margin-top:15%;
+	}
+</style>
 </head>
 <body>
+<jsp:include page="header.jsp" />
+<div id="login">
 <form method="post" action="AdminLogin">
-<label>Password</label><input type="password" name="password">
-<input type="submit" name="submit" value="login">
+<table align="center" cellspacing="20">
+<tr><td><label>Password</label></td><td><input type="password" name="password"></td></tr>
+<tr><td></td><td><input type="submit" name="submit" value="login"></td></tr>
+</table>
 </form>
+</div>
 </body>
 </html>

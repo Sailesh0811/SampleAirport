@@ -35,8 +35,13 @@ public class SearchServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Enter from,to,date,class,seats");
+		CustomerImplementation ci = new CustomerImplementation();
+		String from[]=ci.cityFromList();
+		String to[]=ci.cityToList();
+		request.setAttribute("from", from);
+		request.setAttribute("to", to);
+		RequestDispatcher dispatch = request.getRequestDispatcher("SearchFlight.jsp");
+		dispatch.include(request, response);
 	}
 
 	/**

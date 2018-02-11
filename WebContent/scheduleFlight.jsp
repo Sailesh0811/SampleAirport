@@ -7,6 +7,7 @@
 <title>Schedule Flight</title>
 </head>
 <body>
+<jsp:include page="header.jsp" />
 <form method="post" action ="ScheduleFlightServlet">
 Flight id:<input type="text" name="flightId">
 Date:<input type="text" name="date">

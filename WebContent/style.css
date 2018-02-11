@@ -16,7 +16,8 @@ body{
 
 #sidenav{
 	position: relative;
-	margin-top: 15%;
+	margin-top: 10%;
+	z-index: 1000;
 
 }
 ul{
@@ -31,8 +32,9 @@ a:hover{
 }
 #search{
 	position: relative;
-	margin-top: 10%;
+	margin-top: 0	;
 	text-align: center;
+	z-index: 500;
 }
 
 td,th{

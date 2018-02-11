@@ -144,7 +144,7 @@ public class CustomerImplementation implements CustomerInterface {
 				}
 				flightSearch.setAvailableFlightNo(searchResult.getInt(6));
 				flightSet.add(flightSearch.getAvailableFlightNo());
-
+				System.out.println("cdaad");
 				flightList.add(flightSearch);
 			}
 			return flightList;
@@ -540,5 +540,39 @@ public class CustomerImplementation implements CustomerInterface {
 		}
 		 }
 		 return result;
+	}
+	public String[] cityFromList() {
+		Connection con = new Database().getConnection();
+		String[] from;String temp="";
+		try {
+			PreparedStatement ps = con.prepareStatement("select DISTINCT boarding_place from flight");
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				temp+=rs.getString(1)+",";
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return from=temp.split(",");
+		
+		
+	}
+	public String[] cityToList() {
+		Connection con = new Database().getConnection();
+		String[] to;String temp="";
+		try {
+			PreparedStatement ps = con.prepareStatement("select DISTINCT destination from flight");
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				temp+=rs.getString(1)+",";
+				System.out.println(temp);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return to=temp.split(",");
+		
 	}
 }

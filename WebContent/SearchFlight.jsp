@@ -10,16 +10,45 @@
 </head>
 <body>
 <jsp:include page="header.jsp" />
-
+<div id="sidenav">
+	<ul>
+	<li><a href="SearchServlet">Search and Book</a></li>
+	<li><a href="viewHistory.jsp">View History</a></li>
+	<li><a href="cancelTicket.jsp">Cancel Ticket</a></li>
+	<li><a href="checkIn.jsp">Check In</a></li>
+	</ul>
+</div>
 <c:choose>
 	<c:when test="${f!=0 }">
 	<div id="search">
 	<form method="post" action="SearchServlet">
-	<table cellspacing="10">
-	<tr><td><label>From</label></td><td><input type="text" name="from"></td></tr>
-	<tr><td><label>To</label></td><td><input type="text" name="to" ></td></tr>
+	<table cellspacing="10" align="center">
+	<tr><td><label>From</label></td><td>
+		<select name="from">
+		<c:forEach var="from" items="${from}">
+			<option value="${from}"><c:out value="${from}"></c:out></option>
+		</c:forEach>
+	</select>
+	</td></tr>
+	<tr><td><label>To</label></td><td>
+		<select name="to">
+		<c:forEach var="to" items="${to}">
+			<option value="${to}"><c:out value="${to}"></c:out></option>
+		</c:forEach>
+	</select>
+	
+	</td></tr>
 	<tr><td><label>Date</label></td><td><input type="date" name="date" ></td></tr>
-	<tr><td><label>Seats</label></td><td><input type="number" name="seats"></td></tr>
+	<tr><td><label>Seats</label></td><td>
+		<select name="seats">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+		</select>
+	
+	</td></tr>
 	<tr><td><label>Class</label></td>
 	<td>
 	<select name="class">

@@ -8,12 +8,13 @@
 </head>
 <body>
 <form method="post" action="AddFlightServlet"> 
-		FlightNo<input type="text" name="flightNo">
-		Airline Name <input type="text" name="name">
-		origin<input type="text" name="origin">
-		Destination<input type="text" name="destination">
-		<input type="submit" name="submit" value="Add Flight">
-		 
+	<table>
+		<tr><td>FlightNo</td><td><input type="text" name="flightNo"></td></tr>
+		<tr><td>Airline Name <td><input type="text" name="name"></td></tr>
+		<tr><td>origin</td><td><input type="text" name="origin"></td></tr>
+		<tr><td>Destination</td><td><input type="text" name="destination"></td></tr>
+		<tr><td></td><t><input type="submit" name="submit" value="Add Flight"></td></tr>
+	</table> 
 	</form>
 </body>
 </html>

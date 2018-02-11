@@ -10,9 +10,9 @@
 <jsp:include page="header.jsp" />
 	<div id="sidenav">
 	<ul>
-	<li><a href="SearchFlight.jsp">Search and Book</a></li>
+	<li><a href="SearchServlet">Search and Book</a></li>
 	<li><a href="viewHistory.jsp">View History</a></li>
-	<li><a href="cancelTicket.jsp">Cancel Ticket</a></li>
+	<li><a href="CancelTicketServlet">Cancel Ticket</a></li>
 	<li><a href="checkIn.jsp">Check In</a></li>
 	</ul>
 	</div>

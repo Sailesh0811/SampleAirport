@@ -2,6 +2,8 @@ package Sample;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import coda.global.airport.CustomerImplementation;
 import coda.global.bean.Customer;
+import coda.global.bean.Transaction;
 
 /**
  * Servlet implementation class CancelTicketServlet
@@ -33,8 +36,23 @@ public class CancelTicketServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		HttpSession session = request.getSession();
+		if (session.getAttribute("customerId") != null) {
+			System.out.println("Customer id" + (String) session.getAttribute("customerId"));
+
+			//response.sendRedirect("book.jsp");			
+		} else {
+			session.setAttribute("url", "CancelTicketServlet");
+			response.sendRedirect("login.jsp");
+		}
+		Customer customer = new Customer();
+		CustomerImplementation cust = new CustomerImplementation();
+		customer=(Customer) session.getAttribute("customer");
+		List<Transaction> transactionList=new LinkedList<Transaction>();		
+		transactionList=cust.viewHistory(customer, "2", 0);
+		request.setAttribute("transaction", transactionList);
+		RequestDispatcher rd = request.getRequestDispatcher("cancelTicket.jsp");
+		rd.include(request, response);
 	}
 
 	/**
@@ -45,7 +63,8 @@ public class CancelTicketServlet extends HttpServlet {
 		Customer customer = new Customer();
 		CustomerImplementation cust = new CustomerImplementation();
 		customer=(Customer) session.getAttribute("customer");
-		
+		List<Transaction> transactionList=new LinkedList<Transaction>();		
+		transactionList=cust.viewHistory(customer, "2", 0);
 		int pnr = Integer.parseInt((String)request.getParameter("pnr"));
 		System.out.println(pnr);
 		String result=cust.cancelTicket(customer, pnr);

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
      <%
     if(session.getAttribute("customerId")!=null) {
 		
@@ -19,8 +20,25 @@
 <title>Cancel Ticket</title>
 </head>
 <body>
+<jsp:include page="header.jsp" />
 <form method="post" action="CancelTicketServlet">
-	<input type="text" name="pnr">
+	<table align="center" cellspacing="20">
+					<tr>
+						<th>Select</th>
+						<th>Pnr No</th>
+						<th>Status</th>
+						<th>Flight No</th>
+					</tr>
+
+					<c:forEach items="${transaction}" var="transaction">
+						<tr>
+							<td><input type="radio" name="pnr" value="<c:out value="${transaction.getPnrNo()}"></c:out>">
+							<td><c:out value="${transaction.getPnrNo()}"></c:out></td>
+							<td><c:out value="${transaction.getStatus()}"></c:out></td>
+							<td><c:out value="${transaction.getAvailableFlightNo()}"></c:out>
+						</tr>
+					</c:forEach>
+				</table>
 	<input type="submit" name="submit" value="submit">
 </form>
 </body>
