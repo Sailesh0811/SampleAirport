@@ -6,6 +6,13 @@ public class Crew extends Person{
 	private String designation;
 	private int leaveDays;
 	private String status;
+	private int scheduleFlightno;
+	public int getScheduleFlightno() {
+		return scheduleFlightno;
+	}
+	public void setScheduleFlightno(int scheduleFlightno) {
+		this.scheduleFlightno = scheduleFlightno;
+	}
 	public String getStatus() {
 		return status;
 	}

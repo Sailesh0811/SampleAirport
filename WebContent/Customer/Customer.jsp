@@ -4,18 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Airport System</title>
-
-
+<title>Customer</title>
 </head>
-
 <body>
-	<jsp:include page="header.jsp" />
+<jsp:include page="../header.jsp" />
 	<div id="sidenav">
 	<ul>
-	<li><a href="/Customer/Customer.jsp">Customer</a></li>
-	<li><a href="/Crew/Crew.jsp">Crew</a></li>
-	<li><a href="/Admin/AdminLogin.jsp">Admin</a></li>
+	<li><a href="SearchServlet">Search and Book</a></li>
+	<li><a href="viewHistory.jsp">View History</a></li>
+	<li><a href="CancelTicketServlet">Cancel Ticket</a></li>
+	<li><a href="checkIn.jsp">Check In</a></li>
 	</ul>
 	</div>
 </body>
