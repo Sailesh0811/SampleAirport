@@ -542,7 +542,7 @@ public class CustomerImplementation implements CustomerInterface {
 		String[] from;
 		String temp = "";
 		try {
-			PreparedStatement ps = con.prepareStatement("select DISTINCT boarding_place from flight");
+			PreparedStatement ps = con.prepareStatement("select DISTINCT boarding_place from flight order by boarding_place");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				temp += rs.getString(1) + ",";
@@ -560,7 +560,7 @@ public class CustomerImplementation implements CustomerInterface {
 		String[] to;
 		String temp = "";
 		try {
-			PreparedStatement ps = con.prepareStatement("select DISTINCT destination from flight");
+			PreparedStatement ps = con.prepareStatement("select DISTINCT destination from flight order by destination");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				temp += rs.getString(1) + ",";
