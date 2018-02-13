@@ -20,7 +20,7 @@
 <title>Cancel Ticket</title>
 </head>
 <body>
-<jsp:include page="../header.jsp" />
+<jsp:include page="header.jsp" />
 <form method="post" action="CancelTicketServlet">
 	<table align="center" cellspacing="20">
 					<tr>

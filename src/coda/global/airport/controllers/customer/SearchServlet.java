@@ -61,9 +61,10 @@ public class SearchServlet extends HttpServlet {
 		if(flightList==null) {
 			System.out.println("fadf");
 			request.setAttribute("f", 1);
+			request.setAttribute("flight", flightList);
 			RequestDispatcher dispatch = request.getRequestDispatcher("SearchFlight.jsp");
 			dispatch.include(request, response);
-		}else {
+		}else {			
 			RequestDispatcher dispatch = request.getRequestDispatcher("SearchFlight.jsp");
 		System.out.println("daddfdfdfd");
 		request.setAttribute("f", 0);

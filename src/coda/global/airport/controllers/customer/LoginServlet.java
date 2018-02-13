@@ -63,7 +63,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("customer", cust);
 			// response.sendRedirect((String) session.getAttribute("url"));
 			
-			response.setContentType("application/json");
+			response.setContentType("application/javascript");
 			try {
 				json.put("status", "success");
 			} catch (JSONException e) {

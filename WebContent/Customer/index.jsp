@@ -62,7 +62,7 @@
 		<div class="card" id="card">
 			<div class="card-body">
 				<h5 class="card-title">Search</h5>
-				<form method="POST" action="Customer/SearchServlet">
+				<form method="POST" action="SearchServlet">
 					<div class="form-row">
 						<div class="form-group col-md-2">
 							<label for="from">From</label> <select class="form-control"
@@ -122,9 +122,16 @@
 
 	</div>
 	<div class="container" id="offers">
+		<div id="notification">
+			<c:if test="${scopeSession.pnr >0}">
+				<div class="alert alert-info" role="alert">
+						Your last booked pnr no<c:out value="${scopeSession.pnr}"></c:out> 
+					</div>
+			</c:if>
+		</div>
 		<div class="card-group">
 			<div class="card">
-				<img class="card-img-top" src="assets/images/card3.jpg"
+				<img class="card-img-top" src="../assets/images/card3.jpg"
 					alt="Card image cap">
 				<div class="card-body">
 					<h5 class="card-title">Fly and stay with us!</h5>
@@ -136,7 +143,7 @@
 				</div>
 			</div>
 			<div class="card">
-				<img class="card-img-top" src="assets/images/card2.jpg"
+				<img class="card-img-top" src="../assets/images/card2.jpg"
 					alt="Card image cap">
 				<div class="card-body">
 					<h5 class="card-title">Get 1 for 1</h5>
@@ -147,7 +154,7 @@
 				</div>
 			</div>
 			<div class="card">
-				<img class="card-img-top" src="assets/images/card1.jpg"
+				<img class="card-img-top" src="../assets/images/card1.jpg"
 					alt="Card image cap">
 				<div class="card-body">
 					<h5 class="card-title">Sign up no to get 50% reward</h5>

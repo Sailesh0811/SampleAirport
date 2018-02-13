@@ -12,7 +12,7 @@
 	</style>
 </head>
 <body>
-<jsp:include page="../header.jsp" />
+<jsp:include page="header.jsp" />
 <div id="login">
 <form method="post" action="LoginServlet">
 <table align="center" cellspacing="20">

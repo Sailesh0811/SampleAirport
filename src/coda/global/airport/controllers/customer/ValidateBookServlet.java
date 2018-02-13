@@ -43,6 +43,7 @@ public class ValidateBookServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("book");
 		HttpSession session = request.getSession();
 		int seats=Integer.parseInt((String)session.getAttribute("seats"));
 		System.out.println(seats);
@@ -51,18 +52,16 @@ public class ValidateBookServlet extends HttpServlet {
     		System.out.println("i"+i);
     		String p="passenger"+(i+1);
     		passengerDetails[i]=(String)request.getParameter(p);
-    		System.out.println(passengerDetails[i]);
+    		System.out.println(p+passengerDetails[i]);
     	}
 		Flight flight = (Flight) session.getAttribute("flight");
 		Customer customer = (Customer) session.getAttribute("customer");
 		System.out.println("customer id in booking"+customer.getCustomerId());
 		System.out.println("Avil no"+flight.getAvailableFlightNo());
 		CustomerDelegate cust = new CustomerDelegate();
-		int pnrNo=cust.book(flight, customer,passengerDetails);
-		RequestDispatcher rd = request.getRequestDispatcher("Customer.jsp");
-		rd.include(request, response);
-		PrintWriter out =response.getWriter();
-		out.println("<h1>'Ticket booked your pnr is'"+pnrNo+"</h1>");
+		int pnrNo=cust.book(flight,customer,passengerDetails);
+		session.setAttribute("pnr", pnrNo);
+		response.sendRedirect("IndexServlet");
 	}
 
 }

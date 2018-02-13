@@ -36,8 +36,30 @@ public class ViewHistoryServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		HttpSession session = request.getSession();
+		Customer customer = new Customer();
+		CustomerImplementation cust = new CustomerImplementation();
+		List<Transaction> transactionList=new LinkedList<Transaction>();
+		customer=(Customer) session.getAttribute("customer");
+		//String choice = request.getParameter("choice");
+		
+		int pnr=0;
+//		if(choice.equals("1")) {
+//		 pnr = Integer.parseInt((String)request.getParameter("pnr"));
+//		
+//		}
+		System.out.println(pnr);
+		transactionList=cust.viewHistory(customer, "2", pnr);
+		if(transactionList==null) {
+			request.setAttribute("check", 0);
+		}else {
+			request.setAttribute("check", 1);
+		}
+		System.out.println(transactionList.size());
+		request.setAttribute("transaction", transactionList);
+		RequestDispatcher rd = request.getRequestDispatcher("viewHistory.jsp");
+		rd.include(request, response);
+		
 	}
 
 	/**
@@ -49,15 +71,15 @@ public class ViewHistoryServlet extends HttpServlet {
 		CustomerImplementation cust = new CustomerImplementation();
 		List<Transaction> transactionList=new LinkedList<Transaction>();
 		customer=(Customer) session.getAttribute("customer");
-		String choice = request.getParameter("choice");
-		System.out.println(choice);
-		int pnr=0;
-		if(choice.equals("1")) {
-		 pnr = Integer.parseInt((String)request.getParameter("pnr"));
+		//String choice = request.getParameter("choice");
 		
-		}
+		int pnr=0;
+//		if(choice.equals("1")) {
+//		 pnr = Integer.parseInt((String)request.getParameter("pnr"));
+//		
+//		}
 		System.out.println(pnr);
-		transactionList=cust.viewHistory(customer, choice, pnr);
+		transactionList=cust.viewHistory(customer, "2", pnr);
 		if(transactionList==null) {
 			request.setAttribute("check", 0);
 		}else {

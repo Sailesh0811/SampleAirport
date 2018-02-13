@@ -14,7 +14,7 @@ import coda.global.airport.delegates.CustomerDelegate;
 /**
  * Servlet implementation class IndexServlet
  */
-@WebServlet("/IndexServlet")
+@WebServlet("/Customer/IndexServlet")
 public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

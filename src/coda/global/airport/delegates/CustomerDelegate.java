@@ -46,7 +46,9 @@ public class CustomerDelegate {
 		System.out.println(filter);
 		CustomerImplementation customer = new CustomerImplementation();
 		flightList = customer.searchWithFilter(flight, filter);
-		
+		if(flightList.size()==0) {
+			flightList=null;
+		}
 		return flightList;
 
 		/* Searching for flight */
