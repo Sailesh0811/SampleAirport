@@ -29,9 +29,10 @@ public class CustomerImplementation implements CustomerInterface {
 	Database db = new Database();
 	Connection con;
 	Random rand = new Random();
-	int pnrNo = rand.nextInt(100) + 10000;
+	int pnrNo=0;
 
 	public CustomerImplementation() {
+		pnrNo= rand.nextInt(100) + 10000;
 		con = db.getConnection();
 
 	}
@@ -200,7 +201,7 @@ public class CustomerImplementation implements CustomerInterface {
 		if (customer.getName() != null) {
 			Transaction transaction = new Transaction();
 			System.out.println("Welcome " + customer.getName());
-
+			
 			System.out.println(flight.getAvailableFlightNo());
 			transaction.setPnrNo(pnrNo);
 			transaction.setCustomerId(customer.getCustomerId());
@@ -263,7 +264,9 @@ public class CustomerImplementation implements CustomerInterface {
 								reduceSeat.setInt(2, transaction.getAvailableFlightNo());
 							}
 							if (!reduceSeat.execute()) {
+								System.out.println(pnrNo);
 								System.out.println("Your ticket is bookedssss");
+								
 							}
 						}
 
@@ -276,7 +279,8 @@ public class CustomerImplementation implements CustomerInterface {
 			System.out.println("your tickets are booked");
 
 		}
-		return pnrNo++;
+		System.out.println(pnrNo);
+		return pnrNo;
 	}
 
 	/*

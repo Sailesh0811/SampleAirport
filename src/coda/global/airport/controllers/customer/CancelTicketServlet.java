@@ -83,7 +83,7 @@ public class CancelTicketServlet extends HttpServlet {
 			else
 				json.put("status", "error");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		out.println(json);

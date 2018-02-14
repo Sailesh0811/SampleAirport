@@ -60,8 +60,14 @@ public class ValidateBookServlet extends HttpServlet {
 		System.out.println("Avil no"+flight.getAvailableFlightNo());
 		CustomerDelegate cust = new CustomerDelegate();
 		int pnrNo=cust.book(flight,customer,passengerDetails);
+		System.out.println("controller pnr"+pnrNo);
 		session.setAttribute("pnr", pnrNo);
-		response.sendRedirect("IndexServlet");
+		request.setAttribute("booking", "success");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("bookingSuccess.jsp");
+		requestDispatcher.include(request, response);
+		//response.sendRedirect("IndexServlet");
+		
+		
 	}
 
 }

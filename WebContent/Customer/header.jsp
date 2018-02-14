@@ -14,6 +14,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -144,7 +145,7 @@ a, a:hover {
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg" id="nav"> <a
-		class="navbar-brand" href="index.jsp">Airport</a>
+		class="navbar-brand" href="IndexServlet">Airport</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarSupportedContent"
 		aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -153,7 +154,7 @@ a, a:hover {
 	</button>
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto justify-content-end">
-			<li class="nav-item active"><a class="nav-link" href="index.jsp">Home
+			<li class="nav-item active"><a class="nav-link" href="IndexServlet">Home
 					<span class="sr-only">(current)</span>
 			</a></li>
 
@@ -163,7 +164,7 @@ a, a:hover {
 				aria-expanded="false"> UseFul Links </a> <c:choose>
 					<c:when test="${sessionScope.customer eq null }">
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="Admin/Admin.jsp">Crew Member</a>
+							<a class="dropdown-item" href="../Crew/CrewServlet">Crew Member</a>
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="#">Administrator</a>
 						</div>
@@ -265,26 +266,26 @@ a, a:hover {
 					<form>
 						<div class="container-fluid">
 
-							<div class="row">
+							<div class="form-row">
 								<div class="col">
 									<input type="text" class="form-control" placeholder="Name"
 										id="name" name="name">
 								</div>
 							</div>
-							<div class="row">
+							<div class="form-row">
 								<div class="col">
 									<input type="password" class="form-control"
 										placeholder="password" id="pass" name="password">
 								</div>
 							</div>
-							<div class="row">
+							<div class="form-row">
 								<div class="col">
 									<input type="text" class="form-control"
 										placeholder="Mobile Number" id="contactNumber"
 										name="contactNumber">
 								</div>
 							</div>
-							<div class="row">
+							<div class="form-row">
 								<div class="col">
 									<input type="password" class="form-control"
 										placeholder="gender" id="gender" name="gender">

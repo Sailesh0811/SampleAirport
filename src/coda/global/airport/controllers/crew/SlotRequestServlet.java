@@ -35,15 +35,12 @@ public class SlotRequestServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();		
-		 if(session.getAttribute("crewId")!=null) {				
+		 
+			 	System.out.println("Entered slot request servlet");
 				System.out.println("crew  id"+(String)session.getAttribute("crewId"));				
 				RequestDispatcher rd = request.getRequestDispatcher("slotRequest.jsp");
 				rd.include(request, response);
-			}
-			else {				
-				session.setAttribute("url", "SlotRequestServlet");
-				response.sendRedirect("CrewLogin.jsp");				
-			}
+			
 	}
 
 	/**

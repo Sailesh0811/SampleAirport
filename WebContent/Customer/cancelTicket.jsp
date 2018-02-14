@@ -35,26 +35,21 @@ $(document)
 										.ajax({
 											type : "POST",
 											url : "CancelTicketServlet",
+											dataType : 'json',
 											data : {
 												pnr:pnr
 											},
-											success : function(
-													response) {
+											success : function(response) {
 												console.log(response);
-												var json = JSON.parse(response);
+												var json = response;
 												console.log(json)
-												if (json.status == "success") {
-													console
-															.log("error")
-													$('#alert')
-															.append(
-																	'<div class="alert alert-danger" role="alert">Invalid Username or password</div>');
-												} else {
-													$('#alert').append(
-															'<div class="alert alert-info" role="alert">Your ticket is cancelled successfully</div>');
+												if (json["status"] == "success") {
+													$('.container #alert').append('<div class="alert alert-info" role="alert">Your ticket is cancelled successfully</div>');
 													setTimeout(function(){
 														location.reload();
 													},3000)
+												} else {
+													
 												}
 											}
 										})

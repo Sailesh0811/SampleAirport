@@ -79,6 +79,8 @@ public class CustomerDelegate {
 	}
 	public int book(Flight flight, Customer customer, String[] passenger) {
 		CustomerImplementation customerImplementation = new CustomerImplementation();
-		return customerImplementation.book(flight, customer, passenger);
+		int pnr =customerImplementation.book(flight, customer, passenger);
+		System.out.println("Customer delegate"+pnr);
+		return pnr;
 	}
 }

@@ -3,7 +3,6 @@ package coda.global.airport.controllers.crew;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,10 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import coda.global.airport.dao.CrewRegistrationLogin;
-import coda.global.airport.dao.CustomerLoginRegister;
 import coda.global.bean.Crew;
-import coda.global.bean.Customer;
 
 /**
  * Servlet implementation class CrewLoginSevlet
@@ -46,28 +46,39 @@ public class CrewLoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(true);
 		Crew crew = new Crew();
+		JSONObject json = new JSONObject();
+		System.out.println("fadfadda");
 		CrewRegistrationLogin clr =new CrewRegistrationLogin();
 		crew=clr.login(Integer.parseInt(request.getParameter("crewId")),request.getParameter("password"));
 		if(crew != null) {
-			PrintWriter out = response.getWriter();
-			out.println(crew.getCrewId());
+			
 		session.setAttribute("crewId", request.getParameter("crewId"));
-		if(session.getAttribute("url")!=null) {
+//		if(session.getAttribute("url")!=null) {
 			session.setAttribute("crew", crew);
 			session.setAttribute("id", crew.getCrewId());
 			session.setAttribute("name", crew.getName());
 			session.setAttribute("contactno", crew.getContactNo());
 			session.setAttribute("designation", crew.getDesignation());
 			session.setAttribute("leavedays", crew.getLeaveDays());
-			response.sendRedirect((String) session.getAttribute("url"));
-		}
+			//response.sendRedirect((String) session.getAttribute("url"));
+			try {
+				json.put("status", "success");
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+//		}
 		}else {
-			RequestDispatcher rd = request.getRequestDispatcher("crewLogin.jsp");
-			rd.include(request, response);
-			PrintWriter out = response.getWriter();
-			out.println("<h2>Invalid Username or Password</h2>");
-			
+			try {
+				json.put("status", "failed");
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		response.setContentType("application/javascript");
+		PrintWriter out = response.getWriter();
+		out.println(json);
 	}
 	
 

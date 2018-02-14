@@ -11,13 +11,17 @@
 <title>View Profile</title>
 </head>
 <body>
-<table border="1">
-<tbody>
+<table class="table">
+<thead>
+<tr>
 <th>Name</th>
 <th>Id</th>
 <th>Contact number</th>
 <th>Designation</th>
 <th>Leave Count</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td name="name"> ${name}
 </td>

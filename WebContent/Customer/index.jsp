@@ -123,7 +123,7 @@
 	</div>
 	<div class="container" id="offers">
 		<div id="notification">
-			<c:if test="${scopeSession.pnr >0}">
+			<c:if test="${booking ne null}">
 				<div class="alert alert-info" role="alert">
 						Your last booked pnr no<c:out value="${scopeSession.pnr}"></c:out> 
 					</div>
@@ -188,7 +188,7 @@
 	</div>
 	<nav class="navbar " id="footer">
   
-    <p class="font-italic float-xl-right">Made with <span><img src="assets/images/heart"></span> by Coda</p>
+    <p class="font-italic float-xl-right">Made with <span><img src="../assets/images/like.png"></span> by Coda</p>
   
 </nav>
 </body>

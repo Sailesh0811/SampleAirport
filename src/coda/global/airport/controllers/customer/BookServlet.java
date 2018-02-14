@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -60,7 +61,8 @@ public class BookServlet extends HttpServlet {
 		if(session.getAttribute("customerId")!=null) {
 			
 			System.out.println("Customer id"+(String)session.getAttribute("customerId"));
-			response.sendRedirect("book.jsp");			
+			RequestDispatcher rd = request.getRequestDispatcher("book.jsp");
+			rd.forward(request, response);		
 		}
 		else {
 			session.setAttribute("url", "book.jsp");

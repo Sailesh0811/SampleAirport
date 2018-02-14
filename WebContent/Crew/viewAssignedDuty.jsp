@@ -9,8 +9,11 @@
 </head>
 <body>
 <h1>Your slot</h1>
-<table>
+<table class="table">
+<thead>
 <tr><th>Scheduled Flight No</th></tr>
+</thead>
+<tbody>
 <c:forEach var="some" items="${some}">
 <tr>
 <td><c:out value="${some.getCrewId()}"></c:out>
@@ -20,7 +23,9 @@
 <td><c:out value="${some.getScheduleFlightNo()}"></c:out>
 </td>
 </tr>
+
 </c:forEach>
+</tbody>
 </table>
 
 </body>

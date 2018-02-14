@@ -18,6 +18,7 @@
 </div>
 </div>
 <div class="container">
+
 <form action="ValidateBookServlet" method="post">
 	<table class="table">
 			<thead>
@@ -33,14 +34,12 @@
 			</td><td>
 				<input type="text" name=passenger<c:out value="${seats}"></c:out>> 
 			</td></tr>
-			</c:forEach>
-		
-		
+			</c:forEach>		
 		</tbody>
 	</table>
 	<button type="submit" class="btn btn-primary">Make Payment</button>	
 </form>	
-	
+
 </div> 
 </body>
 </html>
