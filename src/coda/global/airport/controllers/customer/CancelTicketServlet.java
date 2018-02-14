@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import coda.global.airport.dao.CustomerImplementation;
 import coda.global.bean.Customer;
 import coda.global.bean.Transaction;
@@ -49,7 +52,7 @@ public class CancelTicketServlet extends HttpServlet {
 		CustomerImplementation cust = new CustomerImplementation();
 		customer=(Customer) session.getAttribute("customer");
 		List<Transaction> transactionList=new LinkedList<Transaction>();		
-		transactionList=cust.viewHistory(customer, "2", 0);
+		transactionList=cust.viewHistory(customer, "3", 0);
 		request.setAttribute("transaction", transactionList);
 		RequestDispatcher rd = request.getRequestDispatcher("cancelTicket.jsp");
 		rd.include(request, response);
@@ -69,10 +72,21 @@ public class CancelTicketServlet extends HttpServlet {
 		System.out.println(pnr);
 		String result=cust.cancelTicket(customer, pnr);
 		System.out.println(result);
-		RequestDispatcher rd = request.getRequestDispatcher("Customer.jsp");
-		rd.include(request, response);
+//		RequestDispatcher rd = request.getRequestDispatcher("Customer.jsp");
+//		rd.include(request, response);
+		response.setContentType("application/javascript");
 		PrintWriter out = response.getWriter();
-		out.println("<script type='text/javascript'>window.alert(" +result+ ") </script>");
+		JSONObject json=new JSONObject();
+		try {
+			if(result.equals("success"))
+				json.put("status", "success");
+			else
+				json.put("status", "error");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		out.println(json);
 	}
 
 }

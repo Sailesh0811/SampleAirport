@@ -7,7 +7,7 @@
 <title>Customer</title>
 </head>
 <body>
-<jsp:include page="../header.jsp" />
+<jsp:include page="header.jsp" />
 	<div id="sidenav">
 	<ul>
 	<li><a href="SearchServlet">Search and Book</a></li>

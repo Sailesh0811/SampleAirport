@@ -61,6 +61,7 @@
 									<td>
 										<button type="submit" class="btn btn-primary" name="scheduleFlightNo" value='<c:out value="${flight.getAvailableFlightNo()}"></c:out>'>Book
 										</button>
+										</td>
 										</c:if>
 								</tr>
 								

@@ -340,6 +340,31 @@ public class CustomerImplementation implements CustomerInterface {
 					e.printStackTrace();
 				}
 				break;
+			case "3":
+				found = true;
+				try {
+					PreparedStatement pnrSearch = con.prepareStatement(
+							"select t.pnr,t.status,t.flight_schedule_no,p.passenger_name,p.seat_no from transaction t , passenger p  where t.pnr=p.pnr and t.customer_id = ? and status=? ");
+					pnrSearch.setInt(1, customer.getCustomerId());
+					pnrSearch.setString(2, "CNF");
+					ResultSet pnrResultSet = pnrSearch.executeQuery();
+					while (pnrResultSet.next()) {
+						Transaction transaction = new Transaction();
+						transaction.setPnrNo(pnrResultSet.getInt(1));
+						transaction.setStatus(pnrResultSet.getString(2));
+						transaction.setAvailableFlightNo(pnrResultSet.getInt(3));
+						found = false;
+						transactionList.add(transaction);
+						System.out.println(transaction.getPnrNo());
+					}
+					if (found) {
+						// transactionList=null;
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
 			default:
 				System.out.println("Enter a proper choice");
 			}
@@ -394,14 +419,14 @@ public class CustomerImplementation implements CustomerInterface {
 					updateStatus.setString(1, "CAN");
 					updateStatus.setInt(2, transaction.getPnrNo());
 					if (!updateStatus.execute()) {
-						result += ("Your ticket is cancelled");
-						result += ("your refund of  " + transaction.getPrice() + " will be done soon");
+						result += ("success");
+						//result += ("your refund of  " + transaction.getPrice() + " will be done soon");
 
 					}
 
 				}
 			} else {
-				result += ("Enter a proper pnr no");
+				result += ("error");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
